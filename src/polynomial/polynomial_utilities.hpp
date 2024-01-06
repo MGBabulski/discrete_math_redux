@@ -44,8 +44,8 @@ namespace mgb_dsc
      * @param scalar_type type used for scaling arguments (in notation S[A] it is S)
      * @param arg_type type used as an polynomial argument (in notation S[A] it is A)
     */
-    template <typename polynomial_type, typename scalar_type, typename arg_type> requires polynomial_bundle<scalar_type,arg_type> && polynomial_ring<polynomial_type,scalar_type>
-    class crtp_polynomial_interface : public polynomial_type
+    template <typename polynomial_type, typename scalar_type, typename arg_type> requires polynomial_bundle<scalar_type,arg_type>
+    class crtp_polynomial_interface
     {
     private:
         //this will yield error during compilation if you give wrong (non crtp-like) polynomial_type
