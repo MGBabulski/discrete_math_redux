@@ -12,7 +12,7 @@ namespace mgb_dsc
      * @param arg_type type of polynomial argument
     */
     template <typename scalar_type, typename arg_type>
-    class sparse_standard_polynomial : public crtp_polynomial_interface<sparse_standard_polynomial<scalar_type,arg_type>,scalar_type,arg_type>
+    class sparse_standard_polynomial //: public crtp_polynomial_interface<sparse_standard_polynomial<scalar_type,arg_type>,scalar_type,arg_type>
     {
     private:
         std::map<std::size_t,scalar_type> coeffs = std::map<std::size_t,scalar_type>();

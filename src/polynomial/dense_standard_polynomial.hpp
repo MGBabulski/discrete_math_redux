@@ -13,7 +13,7 @@ namespace mgb_dsc
      * @param maximal_degree names maximal degree of the polynomial (in this case it means the limit of maximal_degree+1 coefficients)
     */
     template <typename scalar_type, typename arg_type, std::size_t maximal_degree>
-    class dense_standard_polynomial : public crtp_polynomial_interface<dense_standard_polynomial<scalar_type,arg_type,maximal_degree>,scalar_type,arg_type>
+    class dense_standard_polynomial //: public crtp_polynomial_interface<dense_standard_polynomial<scalar_type,arg_type,maximal_degree>,scalar_type,arg_type>
     {
     private:
         std::array<scalar_type,maximal_degree+1> coeffs = std::array<scalar_type,maximal_degree+1>();
