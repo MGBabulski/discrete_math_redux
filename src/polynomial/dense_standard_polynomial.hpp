@@ -20,8 +20,11 @@ namespace mgb_dsc
     public:
         friend constexpr dense_standard_polynomial operator+ (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept;
         friend constexpr dense_standard_polynomial operator- (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept;
-        friend constexpr dense_standard_polynomial operator* (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept;
-        friend constexpr dense_standard_polynomial operator* (const scalar_type &scalar, const dense_standard_polynomial &a);
+        template <std::size_t seckond_maximal>
+        friend constexpr dense_standard_polynomial<scalar_type,arg_type,maximal_degree+seckond_maximal> operator* (const dense_standard_polynomial<scalar_type,arg_type,maximal_degree> &a, const dense_standard_polynomial<scalar_type,arg_type,seckond_maximal> &b) noexcept;
+        template <std::size_t seckond_maximal>
+        friend constexpr dense_standard_polynomial<scalar_type,arg_type,maximal_degree+seckond_maximal> operator* (const dense_standard_polynomial<scalar_type,arg_type,seckond_maximal> &a, const dense_standard_polynomial<scalar_type,arg_type,maximal_degree> &b) noexcept;
+        friend constexpr dense_standard_polynomial operator* (const scalar_type &scalar, const dense_standard_polynomial &a) noexcept;
         /// friend function used to compare two given polynomials
         friend constexpr bool operator== (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept
         {
@@ -142,7 +145,7 @@ namespace mgb_dsc
     template <typename scalar_type, typename arg_type, std::size_t max_degree_of_first, std::size_t max_degree_of_second>
     constexpr dense_standard_polynomial<scalar_type,arg_type,max_degree_of_first+max_degree_of_second> operator* (const dense_standard_polynomial<scalar_type,arg_type,max_degree_of_first> &a, const dense_standard_polynomial<scalar_type,arg_type,max_degree_of_second> &b) noexcept
     {
-        auto c = dense_standard_polynomial<scalar_type,arg_type,max_degree>();
+        auto c = dense_standard_polynomial<scalar_type,arg_type,max_degree_of_first+max_degree_of_second>();
         for (std::size_t i = 0; i <= max_degree_of_first; i++)
         {
             for (std::size_t j = 0; j <= max_degree_of_second; j++)

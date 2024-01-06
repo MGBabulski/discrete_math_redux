@@ -20,7 +20,7 @@ namespace mgb_dsc
         friend constexpr sparse_standard_polynomial operator+ (const sparse_standard_polynomial &a, const sparse_standard_polynomial &b) noexcept;
         friend constexpr sparse_standard_polynomial operator- (const sparse_standard_polynomial &a, const sparse_standard_polynomial &b) noexcept;
         friend constexpr sparse_standard_polynomial operator* (const sparse_standard_polynomial &a, const sparse_standard_polynomial &b) noexcept;
-        friend constexpr sparse_standard_polynomial operator* (const scalar_type &scalar, const sparse_standard_polynomial &a);
+        friend constexpr sparse_standard_polynomial operator* (const scalar_type &scalar, const sparse_standard_polynomial &a) noexcept;
         /**
          * function, that trivially checks if this polynomial contains other
          * @param other polynomial that may be contained in this
@@ -128,7 +128,7 @@ namespace mgb_dsc
      * @returns sum of the polynomials
     */
     template <typename scalar_type, typename arg_type>
-    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator+ (const sparse_standard_polynomial<scalar_type,arg_type> &a, const sparse_standard_polynomial<scalar_type,arg_type> &b)
+    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator+ (const sparse_standard_polynomial<scalar_type,arg_type> &a, const sparse_standard_polynomial<scalar_type,arg_type> &b) noexcept
     {
         auto c = sparse_standard_polynomial<scalar_type,arg_type>();
         for (const auto &[key,val] : a.coeffs)
@@ -146,7 +146,7 @@ namespace mgb_dsc
      * @returns difference of the polynomials
     */
     template <typename scalar_type, typename arg_type>
-    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator- (const sparse_standard_polynomial<scalar_type,arg_type> &a, const sparse_standard_polynomial<scalar_type,arg_type> &b)
+    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator- (const sparse_standard_polynomial<scalar_type,arg_type> &a, const sparse_standard_polynomial<scalar_type,arg_type> &b) noexcept
     {
         auto c = sparse_standard_polynomial<scalar_type,arg_type>();
         for (const auto &[key,val] : a.coeffs)
@@ -164,7 +164,7 @@ namespace mgb_dsc
      * @returns product of the polynomials
     */
     template <typename scalar_type, typename arg_type>
-    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator* (const sparse_standard_polynomial<scalar_type,arg_type> &a, const sparse_standard_polynomial<scalar_type,arg_type> &b)
+    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator* (const sparse_standard_polynomial<scalar_type,arg_type> &a, const sparse_standard_polynomial<scalar_type,arg_type> &b) noexcept
     {
         auto c = sparse_standard_polynomial<scalar_type,arg_type>();
         for (const auto &[a_key,a_val] : a.coeffs)
@@ -182,7 +182,7 @@ namespace mgb_dsc
      * @returns product of polynomial and scalar
     */
     template <typename scalar_type, typename arg_type>
-    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator* (const scalar_type &scalar, const sparse_standard_polynomial<scalar_type,arg_type> &b)
+    constexpr sparse_standard_polynomial<scalar_type,arg_type> operator* (const scalar_type &scalar, const sparse_standard_polynomial<scalar_type,arg_type> &b) noexcept
     {
         auto c = sparse_standard_polynomial<scalar_type,arg_type>();
         for (const auto &[key,val] : b.coeffs)
