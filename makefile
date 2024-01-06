@@ -1,6 +1,6 @@
 # general variables
 COMPILER = g++
-FLAGS = -stc=c++23 -Ofast -Wall -Wextra -pedantic
+FLAGS = -std=c++23 -Ofast -Wall -Wextra -pedantic
 
 # object (.o) files needed for compilation
 OBJECTS = $(patsubst %.cpp,%.o,$(wildcard ./src/polynomial/*.cpp)) \
