@@ -13,6 +13,7 @@ namespace mgb_dsc
     template <typename scalar_type, typename arg_type>
     concept polynomial_bundle = 
     std::is_default_constructible_v<arg_type>
+    && std::is_default_constructible_v<scalar_type>
     && requires (scalar_type s, arg_type a, arg_type b)
     {
         {a + s} -> std::same_as<arg_type>;
@@ -22,7 +23,7 @@ namespace mgb_dsc
     };
 
     /**
-     * Concept for checking if polynomial_type is additive, multiplicative, and multiplicative by scalar_type
+     * Concept for checking if polynomial_type is additive, subtractive, multiplicative, and multiplicative by scalar_type
      * @note the concept doesn't require multiplication of polynomials to produce the same type, as it may be inefficient to implement it that way
      * @param polynomial_type type used to represent the whole polynomial (in notation S[A] it's the entire structure)
      * @param scalar_type type used for scaling arguments (in notation S[A] it is S)
@@ -32,6 +33,7 @@ namespace mgb_dsc
     requires (polynomial_type A, polynomial_type B, scalar_type s)
     {
         {A + B} -> std::same_as<polynomial_type>;
+        {A - B} -> std::same_as<polynomial_type>;
         {A * B};
         {s * A} -> std::same_as<polynomial_type>;
     };
@@ -69,7 +71,7 @@ namespace mgb_dsc
         }
         /**
          * The method returns maximal degree of the polynomial (in other worlds: the max i for which this->at(i) will not throw)
-         * @note we assume that a degree of a zero polynomial is zero; furthermore if the implementation is dynamic, then the returned value should be std::numeric_limits<std::size_t>::max minus one
+         * @note we assume that a degree of a zero polynomial is zero; furthermore if the implementation is dynamic, then the returned value should be std::numeric_limits<std::size_t>::max-1
          * @returns maximal possible degree the polynomial can achieve
         */
         constexpr std::size_t max_degree () const noexcept
@@ -81,7 +83,7 @@ namespace mgb_dsc
          * @param x argument of the polynomial
          * @returns evaluation of the polynomial
         */
-        constexpr arg_type operator() (const arg_type x) const noexcept
+        constexpr arg_type operator() (const arg_type &x) const noexcept
         {
             return this->cast_reference().operator()(x);
         }
@@ -90,7 +92,7 @@ namespace mgb_dsc
          * @param i index of coefficient a_i (abstractly coresponding to x^i)
          * @returns reference to the coefficient a_i
         */
-        constexpr scalar_type& operator[] (std::size_t i) noexcept
+        constexpr scalar_type& operator[] (const std::size_t i) noexcept
         {
             return this->cast_reference().operator[](i);
         }
@@ -99,7 +101,7 @@ namespace mgb_dsc
          * @param i index of coefficient a_i (abstractly coresponding to x^i)
          * @returns coefficient a_i
         */
-        constexpr scalar_type operator[] (std::size_t i) const noexcept
+        constexpr scalar_type operator[] (const std::size_t i) const noexcept
         {
             return this->cast_reference().operator[](i);
         }
@@ -109,7 +111,7 @@ namespace mgb_dsc
          * @returns reference to the coefficient a_i
          * @throws out of bounds exception when outside of range
         */
-        constexpr scalar_type& at (std::size_t i)
+        constexpr scalar_type& at (const std::size_t i)
         {
             return this->cast_reference().at(i);
         }
@@ -119,7 +121,7 @@ namespace mgb_dsc
          * @returns coefficient a_i
          * @throws out of bounds exception when outside of range
         */
-        constexpr scalar_type at (std::size_t i) const
+        constexpr scalar_type at (const std::size_t i) const
         {
             return this->cast_reference().at(i);
         }
