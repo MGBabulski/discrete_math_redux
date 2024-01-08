@@ -20,16 +20,15 @@ namespace mgb_dsc
     public:
         friend constexpr dense_standard_polynomial operator+<> (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept;
         friend constexpr dense_standard_polynomial operator-<> (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept;
-        template <std::size_t seckond_maximal>
-        friend constexpr dense_standard_polynomial<scalar_type,arg_type,maximal_degree+seckond_maximal> operator* (const dense_standard_polynomial<scalar_type,arg_type,maximal_degree> &a, const dense_standard_polynomial<scalar_type,arg_type,seckond_maximal> &b) noexcept;
-        template <std::size_t seckond_maximal>
-        friend constexpr dense_standard_polynomial<scalar_type,arg_type,maximal_degree+seckond_maximal> operator* (const dense_standard_polynomial<scalar_type,arg_type,seckond_maximal> &a, const dense_standard_polynomial<scalar_type,arg_type,maximal_degree> &b) noexcept;
+        template <typename _scalar_type, typename _arg_type, std::size_t _maximal_degree, std::size_t _seckond_maximal>
+        friend constexpr dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree+_seckond_maximal> operator* (const dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> &a, const dense_standard_polynomial<_scalar_type,_arg_type,_seckond_maximal> &b) noexcept;
         friend constexpr dense_standard_polynomial operator*<> (const scalar_type &scalar, const dense_standard_polynomial &a) noexcept;
         /// friend function used to compare two given polynomials
         friend constexpr bool operator== (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept
         {
             return (a.coeffs == b.coeffs);
         }
+        /// friend function used to multiply two polynomials of the same type (placeholder fix to )
         /**
          * @returns iterator to the first coefficient of the polynomial
         */

@@ -20,3 +20,9 @@ discrete_math_redux.a: $(OBJECTS)
 .PHONEY:
 clean:
 	rm $(OBJECTS)
+
+# cleans the object files AND the .a file (if in default location)
+.PHONEY:
+clean_all:
+	rm $(OBJECTS)
+	rm discrete_math_redux.a
