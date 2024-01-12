@@ -28,7 +28,6 @@ namespace mgb_dsc
         {
             return (a.coeffs == b.coeffs);
         }
-        /// friend function used to multiply two polynomials of the same type (placeholder fix to )
         /**
          * @returns iterator to the first coefficient of the polynomial
         */
