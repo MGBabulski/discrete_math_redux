@@ -4,9 +4,9 @@ This is a project that aims to encapsulate basic objects of discrete mathematics
 
 ## Possibilities
 
-For basic computations and as an extension of basic c++ it should ***just work***. The library encourages user to make their own extensions and provides basic interfaces, that should help with designing usable structures. There are already some example structures inside. The structures are based on crtp static interfaces, which should help maintain high efficiency and 
+For basic computations and as an extension of basic c++ it should ***just work***. The library encourages user to make their own extensions and provides basic interfaces, that should help with designing usable structures. There are already some example structures inside. The structures are based on crtp static interfaces, which should help maintain high efficiency and since there is exactly one interface to inherit from for each module, any ambiguities should simply not exist. The library (and it's basic structures) is ready to be used with multiple-precision arithmetic libraries (that override std traits).
 
-## Limitations (at least for now...)
+## Limitations
 
 This library is more of a proof of concept, than an actual framework. There already exists plenty of much better frameworks and heavily optimized ready-to-use software. This library **does not** provide safety against programmers' stupidity (including, but **not** limited to mine). The library is obviosly reduced, and lacks more sophisticated structures and algorithms.
 
@@ -32,6 +32,21 @@ Full dependancy chart:
 ## graph
 
 ## modular
+This module consists of two parts, that implement basic modular arithmetic structures and concepts:
+
+1. modulus_utilities
+
+    > for crtp interface and compile-time checks
+
+    ```c++
+    template <typename equivalence_class>
+    concept modulus
+
+    template <typename eq_class_type, typename integer_type> requires std::numeric_limits<integer_type>::is_integer
+    class crtp_modulus_equivalence_class_interface
+    ```
+
+7. basic_modulus_equivalence_class
 
 ## polynomial
 
