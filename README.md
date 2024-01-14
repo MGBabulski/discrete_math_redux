@@ -23,7 +23,7 @@ each of them implements intefaces, concepts and sample classes that should help 
 
 Each module is documented insource files. You may also check some use cases and examples in **"tests"** catalogue.
 
-Full dependancy chart:
+Full dependency chart:
 
 //TODO
 
