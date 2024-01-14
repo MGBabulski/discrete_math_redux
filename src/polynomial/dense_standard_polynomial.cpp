@@ -6,6 +6,12 @@ template class mgb_dsc::dense_standard_polynomial<double,double,100>;
 template class mgb_dsc::dense_standard_polynomial<long long,long double,100>;
 template class mgb_dsc::dense_standard_polynomial<long double,long double,100>;
 
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::dense_standard_polynomial<int,float,100>,int,float>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::dense_standard_polynomial<float,float,100>,float,float>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::dense_standard_polynomial<double,double,100>,double,double>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::dense_standard_polynomial<long long,long double,100>,long long,long double>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::dense_standard_polynomial<long double,long double,100>,long double,long double>;
+
 static_assert(mgb_dsc::polynomial_ring<mgb_dsc::dense_standard_polynomial<int,float,100>,int>);
 static_assert(mgb_dsc::polynomial_ring<mgb_dsc::dense_standard_polynomial<float,float,100>,float>);
 static_assert(mgb_dsc::polynomial_ring<mgb_dsc::dense_standard_polynomial<double,double,100>,double>);

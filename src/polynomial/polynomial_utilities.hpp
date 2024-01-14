@@ -35,6 +35,7 @@ namespace mgb_dsc
         {A + B} -> std::same_as<polynomial_type>;
         {A - B} -> std::same_as<polynomial_type>;
         {A * B};
+        {A == B} -> std::same_as<bool>;
         {s * A} -> std::same_as<polynomial_type>;
     };
 
@@ -52,12 +53,16 @@ namespace mgb_dsc
         crtp_polynomial_interface () = default;
         friend polynomial_type;
         /**
-         * The method casts "this" object to a polynomial_type reference for crtp purposes
+         * The methods cast "this" object to a polynomial_type reference for crtp purposes
          * @returns polynomial_type, which basically is the derived class 
         */
         constexpr polynomial_type& cast_reference () noexcept
         {
             return static_cast<polynomial_type&>(*this);
+        }
+        constexpr const polynomial_type& cast_reference () const noexcept
+        {
+            return static_cast<const polynomial_type&>(*this);
         }
     public:
         /**

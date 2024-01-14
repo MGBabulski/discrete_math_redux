@@ -6,6 +6,12 @@ template class mgb_dsc::sparse_standard_polynomial<double,double>;
 template class mgb_dsc::sparse_standard_polynomial<long long,long double>;
 template class mgb_dsc::sparse_standard_polynomial<long double,long double>;
 
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::sparse_standard_polynomial<int,float>,int,float>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::sparse_standard_polynomial<float,float>,float,float>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::sparse_standard_polynomial<double,double>,double,double>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::sparse_standard_polynomial<long long,long double>,long long,long double>;
+template class mgb_dsc::crtp_polynomial_interface<mgb_dsc::sparse_standard_polynomial<long double,long double>,long double,long double>;
+
 static_assert(mgb_dsc::polynomial_ring<mgb_dsc::sparse_standard_polynomial<int,float>,int>);
 static_assert(mgb_dsc::polynomial_ring<mgb_dsc::sparse_standard_polynomial<float,float>,float>);
 static_assert(mgb_dsc::polynomial_ring<mgb_dsc::sparse_standard_polynomial<double,double>,double>);
