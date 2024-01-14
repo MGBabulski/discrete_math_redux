@@ -32,11 +32,12 @@ Full dependancy chart:
 ## graph
 
 ## modular
+
 This module consists of two parts, that implement basic modular arithmetic structures and concepts:
 
 1. modulus_utilities
 
-    > for crtp interface and compile-time checks
+    > crtp interface and compile-time checks
 
     ```c++
     template <typename equivalence_class>
@@ -48,13 +49,20 @@ This module consists of two parts, that implement basic modular arithmetic struc
 
 7. basic_modulus_equivalence_class
 
+    > template class that encapsulates the idea of Z-module equivalence class
+
+    ```c++
+    template <typename integer_type, integer_type N>
+    class basic_modulus_equivalence_class : public crtp_modulus_equivalence_class_interface<basic_modulus_equivalence_class<integer_type,N>,integer_type>
+    ```
+
 ## polynomial
 
 This module consists of three parts, that implement basic polynomial structures and concepts:
 
 1. polynomial_utilities 
     
-    > for crtp interface and compile-time checks
+    > crtp interface and compile-time checks
  
     ```c++
     template <typename scalar_type, typename arg_type>
@@ -69,7 +77,7 @@ This module consists of three parts, that implement basic polynomial structures 
 
 7. dense_standard_polynomial
     
-    > for template class that excels in dealing with densly packed polynomials (where non-zero coefficients are in majority)
+    > template class that excels in dealing with densly packed polynomials (where non-zero coefficients are in majority)
 
     ```c++
     template <typename scalar_type, typename arg_type, std::size_t maximal_degree>
@@ -78,7 +86,7 @@ This module consists of three parts, that implement basic polynomial structures 
 
 7. sparse_standard_polynomial
 
-    > for template class that excels in dealing with sparesly packed polynomials (where non-zero coefficients are in minority)
+    > template class that excels in dealing with sparesly packed polynomials (where non-zero coefficients are in minority)
 
     ```c++
     template <typename scalar_type, typename arg_type>
