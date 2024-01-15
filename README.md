@@ -4,7 +4,7 @@ This is a project that aims to encapsulate basic objects of discrete mathematics
 
 ## Possibilities
 
-For basic computations and as an extension of basic c++ it should ***just work***. The library encourages user to make their own extensions and provides basic interfaces, that should help with designing usable structures. There are already some example structures inside. The structures are based on crtp static interfaces, which should help maintain high efficiency and since there is exactly one interface to inherit from for each module, any ambiguities should simply not exist. The library (and it's basic structures) is ready to be used with multiple-precision arithmetic libraries (that override std traits).
+For basic computations and as an extension of basic c++ it should ***just work***. The library encourages user to make their own extensions and provides basic interfaces, that should help with designing usable structures. There are already some example structures inside. The structures are based on crtp static interfaces, which should help maintain high efficiency and since there is exactly one interface to inherit from for each module, any ambiguities should simply not exist. The library (and it's basic structures) is ready to be used with multiple-precision arithmetic libraries (that override std traits, and are constexpr viable).
 
 ## Limitations
 
@@ -29,7 +29,76 @@ Full dependency chart:
 
 ## combinatorics
 
+This module consists of three parts, that implement basic compile-time combinatoristic constants
+
+1. binomial_coefficient
+
+    > binomial coefficients for given unsigned integer type
+
+    ```c++
+    template <typename integer_type> requires std::numeric_limits<integer_type>::is_integer && std::is_unsigned_v<integer_type>
+    struct binomial
+    {
+        template <integer_type N, integer_type K>
+        struct coefficient
+    }
+
+    template <typename integer_type, integer_type N, integer_type K>
+    using binomial_coefficient = typename binomial<integer_type>::coefficient<N,K>
+
+    template <typename integer_type, integer_type N, integer_type K>
+    constexpr integer_type binomial_coefficient_v = binomial_coefficient<integer_type,N,K>::value
+    ```
+
+7. catalan_number
+
+    > Catalan numbers for given unsigned integer type
+
+    ```c++
+    template <typename integer_type> requires std::numeric_limits<integer_type>::is_integer && std::is_unsigned_v<integer_type>
+    struct catalan
+    {
+        template <integer_type N, bool B>
+        struct number
+    }
+
+    template <typename integer_type, integer_type N>
+    using catalan_number = typename catalan<integer_type>::number<N,true>
+
+    template <typename integer_type, integer_type N>
+    constexpr integer_type catalan_number_v = catalan_number<integer_type,N>::value
+    ```
+
+7. stirling_numbers
+
+    > Stirling numbers of first and second kind for given unsigned integer type
+
+    ```c++
+    template <typename integer_type> requires std::numeric_limits<integer_type>::is_integer && std::is_unsigned_v<integer_type>
+    struct stirling
+    {
+        template <integer_type N, integer_type K, typename enabler = void>
+        struct first_kind
+        template <integer_type N, integer_type K, typename enabler = void>
+        struct second_kind
+    }
+
+    template <typename integer_type, integer_type N, integer_type K>
+    using stirling_first_kind = typename stirling<integer_type>::first_kind<N,K>
+
+    template <typename integer_type, integer_type N, integer_type K>
+    using stirling_second_kind = typename stirling<integer_type>::second_kind<N,K>
+
+    template <typename integer_type, integer_type N, integer_type K>
+    constexpr integer_type stirling_first_kind_v = stirling_first_kind<integer_type,N,K>::value
+
+    template <typename integer_type, integer_type N, integer_type K>
+    constexpr integer_type stirling_second_kind_v = stirling_second_kind<integer_type,N,K>::value
+    ```
+
 ## graph
+
+//EHHHHH
 
 ## modular
 
