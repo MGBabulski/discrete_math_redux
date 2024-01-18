@@ -10,6 +10,10 @@ For basic computations and as an extension of basic c++ it should ***just work**
 
 This library is more of a proof of concept, than an actual framework. There already exists plenty of much better frameworks and heavily optimized ready-to-use software. This library **does not** provide safety against programmers' stupidity (including, but **not** limited to mine). The library is obviosly reduced, and lacks more sophisticated structures and algorithms.
 
+## Requirements and installation
+
+This is a static library. On linux you may run the *makefile* to create *.a* file (if you so desire, but it mostly serves as a test of your compiler). Generally it's most likely best to download source files and manually add them to the solution. The only requirement is a c++ compiler that supports c++23 standard.
+
 # Overviev
 
 The project consists of 4 modules:
@@ -21,7 +25,7 @@ The project consists of 4 modules:
 
 each of them implements intefaces, concepts and sample classes that should help with discrete calculations. 
 
-Each module is documented insource files. You may also check some use cases and examples in **"tests"** catalogue.
+Each module is documented in *respective source files*. You may also check some use cases and examples in **"tests"** catalogue.
 
 Full dependency chart:
 
