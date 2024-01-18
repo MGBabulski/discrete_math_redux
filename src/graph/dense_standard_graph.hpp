@@ -11,7 +11,7 @@ namespace mgb_dsc
      * @note if vertex_number is 0, the behavior is undefined
     */
     template <std::size_t vertex_number>
-    class dense_standarg_graph : public crtp_graph_interface<dense_standarg_graph<vertex_number>,std::size_t>
+    class dense_standard_graph : public crtp_graph_interface<dense_standard_graph<vertex_number>,std::size_t>
     {
     private:
         std::array<std::array<bool,vertex_number>,vertex_number> adj_list = std::array<std::array<bool,vertex_number>,vertex_number>();
