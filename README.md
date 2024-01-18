@@ -23,13 +23,9 @@ The project consists of 4 modules:
 - modular
 - polynomial
 
-each of them implements intefaces, concepts and sample classes that should help with discrete calculations. 
+each of them implements intefaces, concepts and sample classes that should help with discrete calculations. All implementations are members of `mgb_dsc` namespace.
 
 Each module is documented in *respective source files*. You may also check some use cases and examples in **"tests"** catalogue.
-
-Full dependency chart:
-
-//TODO
 
 ## combinatorics
 
@@ -102,7 +98,50 @@ This module consists of three parts, that implement basic compile-time combinato
 
 ## graph
 
-//EHHHHH
+This module consists of four parts, that implement basic graph structures and algorithms:
+
+
+1. graph_utilities
+
+    > crtp interface and compile-time checks
+
+    ```c++
+    template <typename type>
+    concept container_type 
+
+    template <typename graph_type, typename vertex_type, container_type container = std::list<vertex_type>> requires std::totally_ordered<vertex_type>
+    class crtp_graph_interface
+    ```
+
+7. dense_standard_graph
+
+    > simple class, that deals with graphs with dense connections
+
+    ```c++
+    template <std::size_t vertex_number>
+    class dense_standarg_graph : public crtp_graph_interface<dense_standarg_graph<vertex_number>,std::size_t>
+    ```
+
+7. sparse_standard_graph 
+
+    > simple class, that deals with graphs with dense connections
+
+    ```c++
+    template <std::size_t vertex_number>
+    class sparse_standard_graph : public crtp_graph_interface<sparse_standard_graph<vertex_number>,std::size_t,std::set<std::size_t>>
+    ```
+
+7. graph_algorithms
+
+    > very basic algorithms for iterating through graphs
+
+    ```c++
+    template <typename functor_type, typename graph_type, typename vertex_type, container_type container = std::list<vertex_type>>
+    constexpr void apply_dfs (functor_type f, const crtp_graph_interface<graph_type,vertex_type,container> &g, const vertex_type &first) noexcept
+
+    template <typename functor_type, typename graph_type, typename vertex_type, container_type container = std::list<vertex_type>>
+    constexpr void apply_bfs (functor_type f, const crtp_graph_interface<graph_type,vertex_type,container> &g, const vertex_type &first) noexcept
+    ```
 
 ## modular
 
