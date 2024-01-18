@@ -12,15 +12,15 @@ namespace mgb_dsc
     */
     template <typename equivalence_class>
     concept modulus = 
-    std::is_default_constructible_v<equivalence_class>
-    && std::is_copy_constructible_v<equivalence_class>
-    && requires (equivalence_class a, equivalence_class b)
-    {
-        {a + b} -> std::same_as<equivalence_class>;
-        {a - b} -> std::same_as<equivalence_class>;
-        {a * b} -> std::same_as<equivalence_class>;
-        {a == b} -> std::same_as<bool>;
-    };
+        std::is_default_constructible_v<equivalence_class>
+        && std::is_copy_constructible_v<equivalence_class>
+        && requires (equivalence_class a, equivalence_class b)
+        {
+            {a + b} -> std::same_as<equivalence_class>;
+            {a - b} -> std::same_as<equivalence_class>;
+            {a * b} -> std::same_as<equivalence_class>;
+            {a == b} -> std::same_as<bool>;
+        };
     
     /**
      * Interface (as crtp) used to describe an equivalence class of a Z-module

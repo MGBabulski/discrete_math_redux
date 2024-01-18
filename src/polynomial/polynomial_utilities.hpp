@@ -12,15 +12,15 @@ namespace mgb_dsc
     */
     template <typename scalar_type, typename arg_type>
     concept polynomial_bundle = 
-    std::is_default_constructible_v<arg_type>
-    && std::is_default_constructible_v<scalar_type>
-    && requires (scalar_type s, arg_type a, arg_type b)
-    {
-        {a + s} -> std::same_as<arg_type>;
-        {a * s} -> std::same_as<arg_type>;
-        {a + b} -> std::same_as<arg_type>; 
-        {a * b} -> std::same_as<arg_type>;
-    };
+        std::is_default_constructible_v<arg_type>
+        && std::is_default_constructible_v<scalar_type>
+        && requires (scalar_type s, arg_type a, arg_type b)
+        {
+            {a + s} -> std::same_as<arg_type>;
+            {a * s} -> std::same_as<arg_type>;
+            {a + b} -> std::same_as<arg_type>; 
+            {a * b} -> std::same_as<arg_type>;
+        };
 
     /**
      * Concept for checking if polynomial_type is additive, subtractive, multiplicative, and multiplicative by scalar_type
@@ -30,14 +30,14 @@ namespace mgb_dsc
     */
     template <typename polynomial_type, typename scalar_type>
     concept polynomial_ring =
-    requires (polynomial_type A, polynomial_type B, scalar_type s)
-    {
-        {A + B} -> std::same_as<polynomial_type>;
-        {A - B} -> std::same_as<polynomial_type>;
-        {A * B};
-        {A == B} -> std::same_as<bool>;
-        {s * A} -> std::same_as<polynomial_type>;
-    };
+        requires (polynomial_type A, polynomial_type B, scalar_type s)
+        {
+            {A + B} -> std::same_as<polynomial_type>;
+            {A - B} -> std::same_as<polynomial_type>;
+            {A * B};
+            {A == B} -> std::same_as<bool>;
+            {s * A} -> std::same_as<polynomial_type>;
+        };
 
     /**
      * Interface (as crtp) used to describe a polynomial structure in an abstract way
