@@ -36,8 +36,8 @@ namespace mgb_dsc
         crtp_modulus_equivalence_class_interface () = default;
         friend eq_class_type;
         /**
-         * The method casts "this" object to a eq_class_typr reference for crtp purposes
-         * @returns eq_class_type, which basically is the derived class 
+         * The methods cast "this" object to a eq_class_typr reference for crtp purposes
+         * @returns eq_class_type&, which basically is the derived class 
         */
         constexpr eq_class_type& cast_reference () noexcept
         {

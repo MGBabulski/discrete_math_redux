@@ -54,7 +54,7 @@ namespace mgb_dsc
         friend polynomial_type;
         /**
          * The methods cast "this" object to a polynomial_type reference for crtp purposes
-         * @returns polynomial_type, which basically is the derived class 
+         * @returns polynomial_type&, which basically is the derived class 
         */
         constexpr polynomial_type& cast_reference () noexcept
         {
