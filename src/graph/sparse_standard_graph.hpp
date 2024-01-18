@@ -8,7 +8,7 @@ namespace mgb_dsc
 {
     /**
      * The class represents basic directed mathematical graph (V,E), where connections are sparse
-     * @param vertex_number number of verticies
+     * @param vertex_number number of vertices
      * @note if vertex_number is 0, the behavior is undefined
     */
     template <std::size_t vertex_number>
@@ -19,9 +19,9 @@ namespace mgb_dsc
         std::array<bool,vertex_number> check_list = std::array<bool,vertex_number>();
     public:
         /**
-         * @returns set of verticies
+         * @returns set of vertices
         */
-        constexpr std::set<std::size_t> get_verticies () const noexcept
+        constexpr std::set<std::size_t> get_vertices () const noexcept
         {
             auto l = std::set<std::size_t>();
             for (std::size_t i = 0; i < vertex_number; i++)
@@ -35,7 +35,7 @@ namespace mgb_dsc
         }
         /**
          * @param v vertex
-         * @returns set with all verticies adjacent to vertex v if v is a valid vertex, empty list otherwise
+         * @returns set with all vertices adjacent to vertex v if v is a valid vertex, empty list otherwise
         */
         constexpr std::set<std::size_t> get_adjacent (const std::size_t &v) const noexcept
         {
@@ -59,7 +59,7 @@ namespace mgb_dsc
             return (adj_list[v].find(u) == adj_list[v].end());
         }
         /**
-         * The method adds vertex v to used verticies
+         * The method adds vertex v to used vertices
          * @note the method does not add edge (v,v) to the graph
          * @param v vertex to be added
          * @returns true if the vertex was added, false otherwise
@@ -92,7 +92,7 @@ namespace mgb_dsc
         }
         /**
          * The method removes edge (v,u) from the graph
-         * @note does not remove verticies
+         * @note does not remove vertices
          * @param v vertex, that represents v in edge (v,u)
          * @param u vertex, that represents u in edge (v,u)
          * @returns true if edge (v,u) was removed, false otherwise

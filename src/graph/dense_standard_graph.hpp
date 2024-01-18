@@ -7,7 +7,7 @@ namespace mgb_dsc
 {
     /**
      * The class represents basic directed mathematical graph (V,E), where connections are dense
-     * @param vertex_number number of verticies
+     * @param vertex_number number of vertices
      * @note if vertex_number is 0, the behavior is undefined
     */
     template <std::size_t vertex_number>
@@ -18,9 +18,9 @@ namespace mgb_dsc
         std::array<bool,vertex_number> check_list = std::array<bool,vertex_number>();
     public:
         /**
-         * @returns list of verticies
+         * @returns list of vertices
         */
-        constexpr std::list<std::size_t> get_verticies () const noexcept
+        constexpr std::list<std::size_t> get_vertices () const noexcept
         {
             auto l = std::list<std::size_t>();
             for (std::size_t i = 0; i < vertex_number; i++)
@@ -34,7 +34,7 @@ namespace mgb_dsc
         }
         /**
          * @param v vertex
-         * @returns list with all verticies adjacent to vertex v if v is a valid vertex, empty list otherwise
+         * @returns list with all vertices adjacent to vertex v if v is a valid vertex, empty list otherwise
         */
         constexpr std::list<std::size_t> get_adjacent (const std::size_t &v) const noexcept
         {
@@ -66,7 +66,7 @@ namespace mgb_dsc
             return adj_list[v][u];
         }
         /**
-         * The method adds vertex v to used verticies
+         * The method adds vertex v to used vertices
          * @note the method does not add edge (v,v) to the graph
          * @param v vertex to be added
          * @returns true if the vertex was added, false otherwise

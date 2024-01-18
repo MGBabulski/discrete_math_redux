@@ -78,18 +78,18 @@ namespace mgb_dsc
         }
     public:
         /**
-         * The method gives the list of used verticies
-         * @returns container_type container with all of the used verticies
+         * The method gives the list of used vertices
+         * @returns container_type container with all of the used vertices
         */
-        constexpr container get_verticies () const noexcept
+        constexpr container get_vertices () const noexcept
         {
-            return this->cast_reference().get_verticies();
+            return this->cast_reference().get_vertices();
         }
         /**
-         * The method gives the list of adjacent verticies of a given vertex
+         * The method gives the list of adjacent vertices of a given vertex
          * @note returns an empty container if vertex is invalid
          * @param v vertex
-         * @returns container_type container with all verticies adjacent to vertex v
+         * @returns container_type container with all vertices adjacent to vertex v
         */
         constexpr container get_adjacent (const vertex_type &v) const noexcept
         {
@@ -106,7 +106,7 @@ namespace mgb_dsc
             return this->cast_reference().is_edge(v,u);
         }
         /**
-         * The method adds vertex v to used verticies
+         * The method adds vertex v to used vertices
          * @note the method does not add edge (v,v) to the graph
          * @param v vertex to be added
          * @returns true if the vertex was added, false otherwise
@@ -136,7 +136,7 @@ namespace mgb_dsc
             return this->cast_reference().remove_edge(v,u);
         }
         /**
-         * The method clears the entire graph (that is all used verticies and edges)
+         * The method clears the entire graph (that is all used vertices and edges)
         */
         constexpr void clear () noexcept
         {
