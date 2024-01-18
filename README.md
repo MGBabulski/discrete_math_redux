@@ -1,6 +1,6 @@
 # Discrete mathematics reduced library
 
-This is a project that aims to encapsulate basic objects of discrete mathematics and deliver a general framework for further problem solving. The main idea was to find a compromise between optimization and benefits of the modern programming practicies and that's why the solution relies on static polymorphism and high abstraction.
+This is a simple project that aims to encapsulate basic objects of discrete mathematics and deliver a general framework for further problem solving. The main idea was to find a compromise between optimization and benefits of the modern programming practicies and that's why the solution relies on static polymorphism and high abstraction.
 
 ## Possibilities
 
@@ -119,7 +119,7 @@ This module consists of four parts, that implement basic graph structures and al
 
     ```c++
     template <std::size_t vertex_number>
-    class dense_standarg_graph : public crtp_graph_interface<dense_standarg_graph<vertex_number>,std::size_t>
+    class dense_standard_graph : public crtp_graph_interface<dense_standard_graph<vertex_number>,std::size_t>
     ```
 
 7. sparse_standard_graph 

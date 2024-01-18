@@ -69,7 +69,7 @@ namespace mgb_dsc
         {
             if constexpr (N <= 1)
             {
-                return i == 0;
+                return true;
             }
             else
             {
