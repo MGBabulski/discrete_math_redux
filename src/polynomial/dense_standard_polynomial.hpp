@@ -18,11 +18,14 @@ namespace mgb_dsc
     private:
         std::array<scalar_type,maximal_degree+1> coeffs = std::array<scalar_type,maximal_degree+1>();
     public:
-        friend constexpr dense_standard_polynomial operator+<> (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept;
-        friend constexpr dense_standard_polynomial operator-<> (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept;
+        template <typename _scalar_type, typename _arg_type, std::size_t _maximal_degree>
+        friend constexpr dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> operator+ (const dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> &a, const dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> &b) noexcept;
+        template <typename _scalar_type, typename _arg_type, std::size_t _maximal_degree>
+        friend constexpr dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> operator- (const dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> &a, const dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> &b) noexcept;
         template <typename _scalar_type, typename _arg_type, std::size_t _maximal_degree, std::size_t _seckond_maximal>
         friend constexpr dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree+_seckond_maximal> operator* (const dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> &a, const dense_standard_polynomial<_scalar_type,_arg_type,_seckond_maximal> &b) noexcept;
-        friend constexpr dense_standard_polynomial operator*<> (const scalar_type &scalar, const dense_standard_polynomial &a) noexcept;
+        template <typename _scalar_type, typename _arg_type, std::size_t _maximal_degree>
+        friend constexpr dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> operator* (const _scalar_type &scalar, const dense_standard_polynomial<_scalar_type,_arg_type,_maximal_degree> &a) noexcept;
         /// friend function used to compare two given polynomials
         friend constexpr bool operator== (const dense_standard_polynomial &a, const dense_standard_polynomial &b) noexcept
         {

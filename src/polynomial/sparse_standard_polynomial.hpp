@@ -17,10 +17,14 @@ namespace mgb_dsc
     private:
         std::map<std::size_t,scalar_type> coeffs = std::map<std::size_t,scalar_type>();
     public:
-        friend constexpr sparse_standard_polynomial operator+<> (const sparse_standard_polynomial &a, const sparse_standard_polynomial &b) noexcept;
-        friend constexpr sparse_standard_polynomial operator-<> (const sparse_standard_polynomial &a, const sparse_standard_polynomial &b) noexcept;
-        friend constexpr sparse_standard_polynomial operator*<> (const sparse_standard_polynomial &a, const sparse_standard_polynomial &b) noexcept;
-        friend constexpr sparse_standard_polynomial operator*<> (const scalar_type &scalar, const sparse_standard_polynomial &a) noexcept;
+        template <typename _scalar_type, typename _arg_type>
+        friend constexpr sparse_standard_polynomial<_scalar_type,_arg_type> operator+ (const sparse_standard_polynomial<_scalar_type,_arg_type> &a, const sparse_standard_polynomial<_scalar_type,_arg_type> &b) noexcept;
+        template <typename _scalar_type, typename _arg_type>
+        friend constexpr sparse_standard_polynomial<_scalar_type,_arg_type> operator- (const sparse_standard_polynomial<_scalar_type,_arg_type> &a, const sparse_standard_polynomial<_scalar_type,_arg_type> &b) noexcept;
+        template <typename _scalar_type, typename _arg_type>
+        friend constexpr sparse_standard_polynomial<_scalar_type,_arg_type> operator* (const sparse_standard_polynomial<_scalar_type,_arg_type> &a, const sparse_standard_polynomial<_scalar_type,_arg_type> &b) noexcept;
+        template <typename _scalar_type, typename _arg_type>
+        friend constexpr sparse_standard_polynomial<_scalar_type,_arg_type> operator* (const _scalar_type &scalar, const sparse_standard_polynomial<_scalar_type,_arg_type> &a) noexcept;
         /**
          * function, that trivially checks if this polynomial contains other
          * @param other polynomial that may be contained in this

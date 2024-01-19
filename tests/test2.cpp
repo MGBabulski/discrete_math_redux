@@ -15,7 +15,7 @@ void process (mgb_dsc::crtp_graph_interface<graph_type,vertex_type,container> &g
     {
         g.insert_edge(i,i+1);
     }
-    auto x = [i = 0](std::size_t v) mutable {cout << "vertex " << i << " : " << v << "\n";};
+    auto x = [i = 0](std::size_t v) mutable {cout << "vertex " << i++ << " : " << v << "\n";};
     cout << g.is_edge(7,8) << " " << g.is_edge(8,7) << "\n";
     mgb_dsc::apply_bfs(x,g,(std::size_t)1);
     g.prune(3);
